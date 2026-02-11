@@ -27,7 +27,7 @@ router.post("/user/signup", async (req, res) => {
       token: token,
       hash: hash,
       salt: salt,
-      admin: true,
+      admin: false,
     });
 
     await newUser.save();
