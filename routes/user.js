@@ -27,6 +27,7 @@ router.post("/user/signup", async (req, res) => {
       token: token,
       hash: hash,
       salt: salt,
+      admin: false,
     });
 
     await newUser.save();
@@ -51,7 +52,7 @@ router.post("/user/login", async (req, res) => {
       return res.status(401).json("Unauthorized");
     }
     const newHash = SHA256(req.body.password + userFound.salt).toString(
-      encBase64
+      encBase64,
     );
     if (newHash !== userFound.hash) {
       return res.status(401).json("Unauthorized");
