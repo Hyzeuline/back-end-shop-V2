@@ -35,6 +35,7 @@ router.post("/user/signup", async (req, res) => {
     const responseObject = {
       _id: newUser._id,
       token: newUser.token,
+      admin: newUser.admin,
     };
 
     return res.status(201).json(responseObject);
